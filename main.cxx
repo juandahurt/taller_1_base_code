@@ -11,6 +11,7 @@
 #include "Clock.h"
 #include "Hand.h"
 #include "World.h"
+#include "Hexagon.h"
 
 int main( int argc, char** argv )
 {
@@ -23,15 +24,18 @@ int main( int argc, char** argv )
   Hand* minutes = new Hand( 15, get_minute );
   Hand* hour = new Hand( 10, get_hour );
   Body* body = new Body( 20, 100 );
+  Hexagon* hexa = new Hexagon( 10 );
 
   body->SetColor( 1, 0, 1 );
   hour->SetColor( 0, 0, 1 );
   minutes->SetColor( 0, 1, 0 );
   seconds->SetColor( 1, 0, 0 );
+  hexa->SetColor( 1, 0, 0 );
 
   body->AddChild( hour );
   body->AddChild( minutes );
   body->AddChild( seconds );
+  seconds->AddChild( hexa );
   clockWorld.Root = body;
 
   // Callbacks

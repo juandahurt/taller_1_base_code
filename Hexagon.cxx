@@ -2,38 +2,30 @@
 // @author Leonardo Florez-Valencia (florez-l@javeriana.edu.co)
 // -------------------------------------------------------------------------
 
-#include "Hand.h"
-
-#include <cmath>
+#include "Hexagon.h"
 #include <GL/gl.h>
 
 // -------------------------------------------------------------------------
-Hand::
-Hand( float length, std::function< float( ) > f )
-  : Square( ),
-    Length( length / std::sqrt( float( 2 ) ) ),
-    Function( f )
+Hexagon::
+Hexagon( float r )
+  : Circle( 6 ),
+    Radius( r )
 {
 }
 
 // -------------------------------------------------------------------------
-Hand::
-~Hand( )
+Hexagon::
+~Hexagon( )
 {
 }
 
 // -------------------------------------------------------------------------
-void Hand::
+void Hexagon::
 Draw( )
 {
-  float a = this->Function( );
-
-  glRotatef( a, 0, 0, 1 );
-  glScalef( this->Length * 0.08, this->Length, 1 );
-  glRotatef( 45, 0, 0, 1 );
-  glTranslatef( 0.5, 0.5, 0 );
-  this->Square::Draw( );
-
+  glScalef( this->Radius, this->Radius, 1 );
+  this->Circle::Draw( );
 }
 
-// eof - Hand.cxx
+// eof - Body.cxx
+
