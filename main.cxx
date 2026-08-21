@@ -13,6 +13,7 @@
 #include "World.h"
 #include "Hexagon.h"
 #include "Triangle.h"
+#include "Star.h"
 
 int main( int argc, char** argv )
 {
@@ -31,6 +32,9 @@ int main( int argc, char** argv )
   Triangle* triangle = new Triangle();
   triangle->SetColor(0, 1, 1);
 
+  Star* star = new Star(8);
+  star->SetColor(1,1,0);
+
   body->SetColor( 1, 0, 1 );
   hour->SetColor( 0, 0, 1 );
   minutes->SetColor( 0, 1, 0 );
@@ -42,6 +46,7 @@ int main( int argc, char** argv )
   body->AddChild( seconds );
   seconds->AddChild( hexa );
   minutes->AddChild(triangle);
+  hour->AddChild(star);
   clockWorld.Root = body;
 
   // Callbacks

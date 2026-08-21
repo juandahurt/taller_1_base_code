@@ -8,8 +8,8 @@ LDLAGS := -lGL -lglut
 
 all: ClockGLApp
 
-ClockGLApp: main.o App.o Body.o Callbacks.o Circle.o Clock.o Hand.o Object.o Square.o World.o Hexagon.o Triangle.o
-	$(CC) main.o App.o Body.o Callbacks.o Circle.o Clock.o Hand.o Object.o Square.o World.o Hexagon.o Triangle.o $(LDLAGS) -o ClockGLApp
+ClockGLApp: main.o App.o Body.o Callbacks.o Circle.o Clock.o Hand.o Object.o Square.o World.o Hexagon.o Triangle.o Star.o
+	$(CC) main.o App.o Body.o Callbacks.o Circle.o Clock.o Hand.o Object.o Square.o World.o Hexagon.o Triangle.o Star.o $(LDLAGS) -o ClockGLApp
 
 main.o: main.cxx
 	$(CC) $(CFLAGS) -c main.cxx
@@ -46,6 +46,9 @@ Hexagon.o: Hexagon.cxx Hexagon.h Circle.h
 
 Triangle.o: Triangle.cxx Triangle.h Circle.h
 	$(CC) $(CFLAGS) -c Triangle.cxx
+
+Star.o: Star.cxx Star.h Triangle.h
+	$(CC) $(CFLAGS) -c Star.cxx
 
 clean:
 	rm -rf *.o ClockGLApp
